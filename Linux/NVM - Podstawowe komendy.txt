@@ -1,0 +1,33 @@
+# NVM - Podstawowe komendy #
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+// Instalacja dla Windows
+https://github.com/coreybutler/nvm-windows#installation--upgrades
+
+// Albo instalacja exe, albo poprzez noinstall (jeśli np. nie masz uprawnień administartora na komputerze).
+// Przy noinstall należy odpowiednio ustawić zmienne środowiskowe.
+
+// Sprawdzenie aktualnie używanej wersji
+node -v  lub  node --version
+npm -v   lub  npm --version
+nvm -v   lub  nvm --version
+
+// Lista zainstalowanych wersji node
+nvm ls
+
+// Sprawdzenie dostępnych wersji
+nvm list available
+
+// Instalacja określonej wersji
+nvm install 6.9.2
+
+// Użycie określonej wersji
+nvm use 6.9.1
+
+// Odinstalowanie określonej wersji
+nvm uninstall 6.9.1
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+// Źródło: https://gist.github.com/chranderson/b0a02781c232f170db634b40c97ff455

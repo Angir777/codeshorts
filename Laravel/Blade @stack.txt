@@ -1,0 +1,29 @@
+# Blade @stack #
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+// Można za pomocą stack dodawać style oraz js. Jeśli dwa razy wywołam stack lub jeden wyżej to mi ostatni nadpisze.
+
+// W pliku ogólnym blade:
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Styles -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <!-- Additional styles per page -->
+    @stack('styles')
+</head>
+
+// A w pliku blade:
+
+@push('styles')
+	...
+@endpush
