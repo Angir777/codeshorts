@@ -1,11 +1,11 @@
 # LINUX - Podstawowe komendy #
 @ 26-01-2023 @
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 // LINUX ONLINE: https://bellard.org/jslinux/
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* cd - Zmiana katalogu */
 
@@ -16,7 +16,7 @@
 // Przechodzenie do katalogu ze spacjami w nazwie: cd "katalog A" lub cd katalog\ A
 // TAB sam podpowiada nazwy
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* mkdir - Tworzenie katalogów i usówanie */
 
@@ -26,7 +26,7 @@
 // Aby podczas tworzenia katalogu ustawić prawa dostępu takie jakie chcemy, musimy użyć opcji -m po której wpisujemy wartość OKTALNĄ praw dostępu.
 // Katalog, do którego użytkownicy grupy i pozostali nie będą mieli żadnych praw: mkdir -m 700 katalogC
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* rm - Usówanie plików/katalogów i tworzenie */
 
@@ -54,7 +54,7 @@
 // Jeśli plik nie posiada uprawnień do pisania to mamy opcję: shred -f nazwaPliku (o ile będzie można zmienić uprawnienia)
 // Opcja zamazania zerami, co ukryje shred: shred -z nazwaPliku (będzie pusty przy odczycie)
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* ls - Wyświetlenie zawartości katalogu */
 
@@ -70,7 +70,7 @@ uprawnienie / liczba łączy / id usera / id grupy / liczba bajtów / data ostat
 
 // Wyświetlanie posortowanej listy według kolejności edytowania (ostatnie odytowane są na górze): ls -lt
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* mv - Przenieś, lub zmień nazwę pliku / katalogu */
 
@@ -78,7 +78,7 @@ uprawnienie / liczba łączy / id usera / id grupy / liczba bajtów / data ostat
 // Jeśli chcemy, aby przenoszony plik został zamieniony z istniejącym jedynie pod warunkiem potwierdzenia przez nas: mv -i plikA katalogB
 // Zmaina nazwy: mv plikA plikB
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* cp - Kopiowanie plików (katalogów) */
 
@@ -89,7 +89,7 @@ uprawnienie / liczba łączy / id usera / id grupy / liczba bajtów / data ostat
 
 // Jeśli chcemy mieć pewność, że podczas kopiowania nie dojdzie do zastąpienia pliku bez powiadomienia, to możemy użyć: cp -i plikA plikB
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* chmod - Zmiana dostępu do plików (prawa dostępu) */
 
@@ -154,7 +154,7 @@ chmod u+rw,g+r,o+x nazwaPliku.txt co daje -rw-r----x
 
 // Zmiana uprawnień do katalogu i jego zawartości: chmod -R 764 katalog/
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* Pętle */
 
@@ -177,7 +177,7 @@ for i in $(ls *.php)
 
 for i in $(ls *.php); do mv $i $(basename $i .php)_$(date +%Y%m%d).php; done
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* Polecenia zarządzające systemem plików */
 
@@ -199,7 +199,7 @@ for i in $(ls *.php); do mv $i $(basename $i .php)_$(date +%Y%m%d).php; done
 // Warto wspomnieć o tym, że podczas używania kont zwykłych użytkowników jako znak zachęty wyświetlany jest znak dolara ($). 
 // W przypadku użytkownika root, znakiem tym jest hasz (#).
 
--------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
 /* Inne */
 
