@@ -118,16 +118,16 @@ d  -> katalog np. 	drwxr-xr-x 2 root root 72 Sep  9 10:03 file1_20220909
 // Aby zmienić prawa dostępu należy użyć opcji: chmod 740 nazwaPliku.txt
 // Kombinacje praw dostępu:
 
-|       Wartość	       |	    Prawa dostępu			        |.
-| Ósemkowa | Literowa  |						                    |.
-|    7     | rwx       | Czytanie, pisanie, wykonywanie	|.
-|    6     | rw-       | Czytanie, pisanie,			        |.
-|    5     | r-x       | Czytanie,        , wykonywanie	|.
-|    4     | r--       | Czytanie,        ,			        |.
-|    3     | -wx       |         , pisanie, wykonywanie	|.
-|    2     | -w-       |         , pisanie, 			      |.
-|    1     | --x       |         ,        , wykonywanie	|.
-|    0     | ---       |         ,        , 			      |.
+|       Wartość	       |	       Prawa dostępu			    |
+| Ósemkowa | Literowa  |						                    |
+|    7     | rwx       | Czytanie, pisanie, wykonywanie	|
+|    6     | rw-       | Czytanie, pisanie,			        |
+|    5     | r-x       | Czytanie,        , wykonywanie	|
+|    4     | r--       | Czytanie,        ,			        |
+|    3     | -wx       |         , pisanie, wykonywanie	|
+|    2     | -w-       |         , pisanie, 			      |
+|    1     | --x       |         ,        , wykonywanie	|
+|    0     | ---       |         ,        , 			      |
 
 // Czyli dla -rw-r--r-- mamy chmod 644 nazwaPliku.txt
 
