@@ -1,0 +1,217 @@
+# LINUX - Podstawowe komendy #
+@ 26-01-2023 @
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+// LINUX ONLINE: https://bellard.org/jslinux/
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* cd - Zmiana katalogu */
+
+// Wejście do katalogu: cd katalogA
+// Przeniesienie do katalogu usera: ~/katalogA
+// Przejście wyżej: cd ..
+// Przejście do katalogu w którym byliśmy ostatnio: cd -
+// Przechodzenie do katalogu ze spacjami w nazwie: cd "katalog A" lub cd katalog\ A
+// TAB sam podpowiada nazwy
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* mkdir - Tworzenie katalogów i usówanie */
+
+// Utworzeie nowego katalogu: mkdir katalogA
+// Usunięcie katalogu o ile jest pusty: rmdir katalogA
+
+// Aby podczas tworzenia katalogu ustawić prawa dostępu takie jakie chcemy, musimy użyć opcji -m po której wpisujemy wartość OKTALNĄ praw dostępu.
+// Katalog, do którego użytkownicy grupy i pozostali nie będą mieli żadnych praw: mkdir -m 700 katalogC
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* rm - Usówanie plików/katalogów i tworzenie */
+
+// Utworzenie pliku: cat > NazwaPliku.txt 	// Tutaj będzie trzeba go uzupełnić
+// Utworzenie pliku: touch NazwaPliku.txt	  // Ten tworzy pusty plik
+
+// Teraz możemy wpisać treść. Klawiszem ENTER przechodzimy do nowej linii. Aby zakończyć podajemy CTRL+D
+
+// Wyświetlenie zawartości pliku: cat NazwaPliku.txt
+// Wyświetlanie z numaracją wierszy: cat -n NazwaPliku.txt
+
+// Wyświetlanie i edycja pliku w edytorze NANO: nano NazwaPliku.txt
+
+// Odpali nam się edytor nano w terminalu
+// Zapis zmian: CTRL+X Y ENTER
+// Wycięcie lini tekstu: CTRL+K
+// Wklejenie lini tekstu: CTRL+U
+// Wyjście: CTRL+X
+
+// Usunięcie plików o formacie txt: rm *.txt
+
+// Usunięcie katalogu z zawartością: rm -rI katalogA
+
+// Zamazanie zawartości pliku oraz jego usunięcie: shred -u nazwaPliku
+// Jeśli plik nie posiada uprawnień do pisania to mamy opcję: shred -f nazwaPliku (o ile będzie można zmienić uprawnienia)
+// Opcja zamazania zerami, co ukryje shred: shred -z nazwaPliku (będzie pusty przy odczycie)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* ls - Wyświetlenie zawartości katalogu */
+
+// Wyświetlenie zawartości folderu: ls
+// Wyświetlanie więcej informacji: ls -l
+// Przykład:
+-rw-r--r-- 1 root root  61 Sep  9 08:36 dupa.txt
+uprawnienie / liczba łączy / id usera / id grupy / liczba bajtów / data ostatniej modyfikacji / nazwa
+
+// Wyświetlanie ukrytych katalogów
+// Opcja: ls -a dodaje "." lub ".." co oznacza katalog bierzący oraz nadrzędny
+// Opcja: ls -A pomija kropki
+
+// Wyświetlanie posortowanej listy według kolejności edytowania (ostatnie odytowane są na górze): ls -lt
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* mv - Przenieś, lub zmień nazwę pliku / katalogu */
+
+// Przeniesienie pliku do katalogu: mv plikA katalogB
+// Jeśli chcemy, aby przenoszony plik został zamieniony z istniejącym jedynie pod warunkiem potwierdzenia przez nas: mv -i plikA katalogB
+// Zmaina nazwy: mv plikA plikB
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* cp - Kopiowanie plików (katalogów) */
+
+// Kopiowanie pliku: cp plikA plikB
+// Kopiowanie katalogów: cp -r katA katB
+// Kopiowanie w inny sposób: cp -t katA/ plik*	// Nie maznaczenia znak '/', skopuje wszystkie pliki z nazwą zaczynającą się na 'plik'
+// Podmienianie pliku, który nie ma praw do zapisu: cp -f plikA plikB
+
+// Jeśli chcemy mieć pewność, że podczas kopiowania nie dojdzie do zastąpienia pliku bez powiadomienia, to możemy użyć: cp -i plikA plikB
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* chmod - Zmiana dostępu do plików (prawa dostępu) */
+
+// W Linuksie każdy plik (katalog) ma swoje określone prawa dostępu. 
+// Definiują one czy plik może zostać odczytany (r), czy można do niego pisać (w), czy można go wykonać (x).
+// Każdy plik posiada uprawnienia podzielone na trzy części, które odpowiednio oznaczają: 
+- prawa dostępu właściciela pliku, 
+- prawa dostępu grupy, 
+- oraz prawa dostępu pozostałych.
+
+-rw-r--r-- 1 root root 1 Sep  9 09:56 file1_20220909.php
+
+// W naszym przypadku pierwsza część to rw-, druga to r-- oraz trzecia to r--.
+
+// Prawa dostępu można łączyć, dlatego też prawo dostępu właściciela pliku oznacza, że może on czytać (r) plik, oraz pisać (w) do pliku, 
+// natomiast nie może pliku wykonywać (uruchamiać np. pliku wykonywalnego, skryptu). Prawo dostępu grupy oraz prawo dostępu pozostałych oznaczają, 
+// że użytkownicy grupy oraz pozostałe osoby mogą ten plik tylko czytać.
+
+// Na rysunku 1 prawa dostępu zaczynają się od minusa (-), ten znak nie jest określeniem jakiegokolwiek prawa, a informacją o tym, 
+// że plik ten jest plikiem zwykłym. Mogę wystąpić inne znaki na pierwszej pozycji, np (-,d,l,s,f,c,b).
+
+// Dla przykładu:
+-  -> zwykły plik np. 	-rw-r--r-- 1 root root 1 Sep  9 09:56 file1_20220909.php
+d  -> katalog np. 	drwxr-xr-x 2 root root 72 Sep  9 10:03 file1_20220909
+
+// Aby zmienić prawa dostępu należy użyć opcji: chmod 740 nazwaPliku.txt
+// Kombinacje praw dostępu:
+
+|       Wartość	     |	Prawa dostępu			|
+| Ósemkowa | Literowa  |						|
+|    7     | rwx       | Czytanie, pisanie, wykonywanie	|
+|    6     | rw-       | Czytanie, pisanie,			|
+|    5     | r-x       | Czytanie,        , wykonywanie	|
+|    4     | r--       | Czytanie,        ,			|
+|    3     | -wx       |         , pisanie, wykonywanie	|
+|    2     | -w-       |         , pisanie, 			|
+|    1     | --x       |         ,        , wykonywanie	|
+|    0     | ---       |         ,        , 			|
+
+// Czyli dla -rw-r--r-- mamy chmod 644 nazwaPliku.txt
+
+// Inny sposób przyznawania uprawnień:
+
+| Zanak | Znaczenie 			|
+|   +   | Dodawanie uprawnienia		|
+|   -   | Odejmowanie uprawnienia	|
+|   =   | Ustawienie uprawnienia	|
+|   u   | Użytkownik			|
+|   g   | Grupa				|
+|   o   | Pozostali			|
+|   a   | Wszyscy			|
+
+// Przykład:
+
+chmod 000 nazwaPliku.txt
+chmod u+rw,g+r,o+x nazwaPliku.txt co daje -rw-r----x 
+
+// Jeśli ustawiamy uprawnienia np. właścicielowi pliku i nie ustawiamy innym użytkownikom, to jeśli użytkownicy grupy, 
+// lub pozostali mieli prędzej jakieś prawa dostępu to one zostaną. Aby wyzerować ich uprawnienia musimy podać jako prawo dostępu minus.
+
+// Zmiana uprawnień wszystkim na raz na to samo: chmod a+rwx katalogA
+
+// Zmiana uprawnień do katalogu i jego zawartości: chmod -R 764 katalog/
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* Pętle */
+
+// Mamy w katalogu X, n plików, każdy z rozszerzeniem .php. Chcemy, aby każdy z tych plików znalazł się w katalogu 
+// którego nazwą będzie nazwa tego pliku, bez rozszerzenia (np. plik: name.php, katalog: name).
+
+for i in $(ls *.php)
+> do
+> tmp=`basename $i .php`
+> mkdir $tmp
+> mv $i $tmp/
+> done
+
+// Zmiana nazwy plików
+
+for i in $(ls *.php)
+> do
+> mv $i $(basename $i .php)_$(date +%Y%m%d).php
+> done
+
+for i in $(ls *.php); do mv $i $(basename $i .php)_$(date +%Y%m%d).php; done
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* Polecenia zarządzające systemem plików */
+
+// Wyświetl informacje o dostępnej przestrzeni dyskowej: df -h
+// Wyświetl informację ile zajmują poszczególne katalogi d -h
+// Suma ile zajmują wszystkie katalogi (w danym foderze gdzie odpalamy polecenie): du -sh .
+
+/* Procesy */
+
+// Wyświetlanie informacji o wszystkich procesach: ps
+// Restart systemu: reboot
+
+/* Polecenia zarządzające użytkownikami, grupami i systemem */
+
+// Wyświetlanie bieżącego katalogu: pwd
+// Wyświetl wszystkie lub częściowe informacje o środowisku: printenv
+// Logowanie na konto innego użytkownika: su
+
+// Warto wspomnieć o tym, że podczas używania kont zwykłych użytkowników jako znak zachęty wyświetlany jest znak dolara ($). 
+// W przypadku użytkownika root, znakiem tym jest hasz (#).
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+/* Inne */
+
+// Sprawdzenie miejsca: df -BG
+/dev/sda1 Use
+
+// Wyświetlanie pomocy za pośrednictwem elektronicznego podręcznika: man man
+// Wyszukanie pliku w danym katalogu: find nazwaPliku.txt
+
+// Program tar tworzy nieskompresowane archiwum: tar -cvf archiwum.tar anna/
+// Składnia: tar opcje nazwa archiwum plik. Najczęściej używane opcje to:
+c (create) - tworzenie archiwum
+v (view) - podczas tworzenia archiwum wyświetlane będą nazwy zbiorów
+f (file) - użycie wskazanego pliku jako archiwum
+x - wyodrębnienie zbiorów z archiwum
